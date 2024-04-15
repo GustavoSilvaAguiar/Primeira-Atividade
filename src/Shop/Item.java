@@ -24,4 +24,9 @@ public class Item {
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
+
+    @Override
+    public String toString() {
+        return "Item [quantidadeProduto=" + quantidadeProduto + ", produto=" + produto + "]";
+    }
 }

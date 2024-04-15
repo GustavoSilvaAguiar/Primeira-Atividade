@@ -17,6 +17,11 @@ public class Produto {
         this.nomeProduto = nomeProduto;
     }
 
+    @Override
+    public String toString() {
+        return "Produto [nomeProduto=" + nomeProduto + ", descricaoProduto=" + descricaoProduto + "]";
+    }
+
     public String getDescricaoProduto() {
         return this.descricaoProduto;
     }

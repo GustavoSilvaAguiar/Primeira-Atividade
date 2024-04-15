@@ -1,11 +1,21 @@
 import java.util.Scanner;
 
+import Pessoa.Cliente;
 import Pessoa.PessoaFisica;
 import Pessoa.PessoaJuridica;
-import Shop.Pedido;
+import Shop.*;
 
 public class App {
     public static void main(String[] args) {
+
+        Produto produto = new Produto("abobrinha", "verde");
+        Produto produto2 = new Produto("abobrinha2", "verde2");
+
+        Item item1 = new Item(2, produto);
+        Item item2 = new Item(4, produto2);
+        Item[] itens = { item1, item2 };
+
+        Cliente pessoa;
 
         Scanner scanner = new Scanner(System.in);
         Helpers help = new Helpers();
@@ -26,35 +36,40 @@ public class App {
 
         // Inicializar a determinada classe baseado nos dados recebidos.
         if (help.cpfOrCnpj(cpfCNPJ)) {
-            PessoaFisica pessoaFisica = new PessoaFisica(nomeCliente, emailCliente, cpfCNPJ);
+            pessoa = new PessoaFisica(nomeCliente, emailCliente, cpfCNPJ);
 
             System.out.println("\nDados cadastrados: \n");
-            System.out.println("Nome: " + pessoaFisica.getNome() + "\nCPF: " + pessoaFisica.getCPF() + "\nE-mail: "
-                    + pessoaFisica.getEmail());
+            System.out.println("Nome: " + pessoa.getNome() + "\nCPF: " + ((PessoaFisica) pessoa).getCPF() + "\nE-mail: "
+                    + ((PessoaFisica) pessoa).getEmail());
 
             System.out.println(
                     "Cliente cadastrado, gostaria de cadastrar itens a sua lista? Se sim, digite os itens, para encerrar digite n");
 
-            pessoaFisica.listaCompra();
+            ((PessoaFisica) pessoa).listaCompra();
 
-            System.out.println("Lista de compras: " + pessoaFisica.getListaCompra());
+            System.out.println("Lista de compras: " + ((PessoaFisica) pessoa).getListaCompra());
+
+            Pedido pedido = new Pedido(((PessoaFisica) pessoa), itens);
+
+            System.out.println(pedido);
+
         } else {
             System.out.print("Digite o nome fantasia: ");
             String nomeFantasia = scanner.nextLine();
 
-            PessoaJuridica pessoaJuridica = new PessoaJuridica(nomeCliente, emailCliente, cpfCNPJ, nomeFantasia);
+            pessoa = new PessoaJuridica(nomeCliente, emailCliente, cpfCNPJ, nomeFantasia);
 
             System.out.println("\nDados cadastrados: \n");
-            System.out.println("Nome " + pessoaJuridica.getNome() + "\nCNPJ: " + pessoaJuridica.getCNPJ()
-                    + "\nFE-mail: " + pessoaJuridica.getEmail() + "\nNome Fantasia: "
-                    + pessoaJuridica.getNomeFantasia());
+            System.out.println("Nome " + pessoa.getNome() + "\nCNPJ: " + ((PessoaJuridica) pessoa).getCNPJ()
+                    + "\nFE-mail: " + ((PessoaJuridica) pessoa).getEmail() + "\nNome Fantasia: "
+                    + ((PessoaJuridica) pessoa).getNomeFantasia());
 
             System.out.println(
                     "Cliente cadastrado, gostaria de cadastrar itens a sua lista? Se sim, digite os itens, para encerrar digite n");
 
-            pessoaJuridica.listaCompra();
+            ((PessoaJuridica) pessoa).listaCompra();
 
-            System.out.println("Lista de compras: " + pessoaJuridica.getListaCompra());
+            System.out.println("Lista de compras: " + ((PessoaJuridica) pessoa).getListaCompra());
         }
 
         scanner.close();
