@@ -1,11 +1,18 @@
 package Pessoa;
 import java.util.Scanner;
 
-public class Cliente {
+import Shop.Item;
+import Shop.Pedido;
+import Shop.Produto;
+
+public abstract class Cliente {
     Scanner scanner = new Scanner(System.in);
     private String nome;
     private String email;
     private String[] listaCompras;
+    private Produto produto;
+    private Item[] itens;
+    private Pedido pedido;
 
     public Cliente(String nome, String email) {
         this.nome = nome;
@@ -63,6 +70,13 @@ public class Cliente {
                 addListaCompra(lista);
             }
         } while (!lista.equals("n"));
+    }
+
+    public void realizaPedido(Produto newProduto, int quantidadeProduto) {
+        // escolher o item e a quantidade
+        itens[0] = new Item(quantidadeProduto, newProduto);
+        // realizar o pedido
+
     }
 
 }

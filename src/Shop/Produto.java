@@ -1,10 +1,13 @@
 package Shop;
 
 public class Produto {
+    private int IdProduto;
+
     private String nomeProduto;
     private String descricaoProduto;
 
-    public Produto(String nomeProduto, String descricaoProduto) {
+    public Produto(int idProduto, String nomeProduto, String descricaoProduto) {
+        this.IdProduto = idProduto;
         this.nomeProduto = nomeProduto;
         this.descricaoProduto = descricaoProduto;
     }
@@ -28,6 +31,14 @@ public class Produto {
 
     public void setDescricaoProduto(String descricaoProduto) {
         this.descricaoProduto = descricaoProduto;
+    }
+
+    public int getIdProduto() {
+        return this.IdProduto;
+    }
+
+    public void setIdProduto(int idProduto) {
+        this.IdProduto = idProduto;
     }
 
 }

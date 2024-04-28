@@ -8,12 +8,14 @@ import Shop.*;
 public class App {
     public static void main(String[] args) {
 
-        Produto produto = new Produto("abobrinha", "verde");
-        Produto produto2 = new Produto("abobrinha2", "verde2");
+        Produto produto = new Produto(1, "abobrinha", "verde");
+        Produto produto2 = new Produto(2, "abobrinha2", "verde2");
+        Produto produto3 = new Produto(3, "abobrinha3", "verde3");
 
         Item item1 = new Item(2, produto);
         Item item2 = new Item(4, produto2);
-        Item[] itens = { item1, item2 };
+        Item item3 = new Item(8, produto3);
+        Item[] itens = { item1, item2, item3 };
 
         Cliente pessoa;
 
